@@ -33,9 +33,9 @@
 			<div class="filterContainer">
 				<button id="select-button">Filter</button>
 				<div id="dropdown" class="dropdown-buttons">
-				  <button id="hotels">Hotels</button>
-				  <button id="tourist_attractions">Tourist Attractions</button>
-				  <button id="restaurants">Restaurants</button>
+				  <button style="border-radius: 10px;" id="hotels">Hotels</button>
+				  <button style="border-radius: 10px;" id="tourist_attractions">Tourist Attractions</button>
+				  <button style="border-radius: 10px;" id="restaurants">Restaurants</button>
 				</div>
 			  </div>
 		</div>
@@ -49,11 +49,11 @@
 	</div>
 	<div class="textbox">
 		<h2>My Travel List</h2>
-		<div id="list">
+		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px; ">
 			<!-- Travel list items will be added here -->
 		{% block itineraryinfo %}
 		{% endblock %}
-		<button id="save-button"> Save </button> <!-- Add function call when button is pressed -->
+		<button style="border: 1px solid; margin: 0px 10px 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
 		</div>
 	</div>
 </div>
