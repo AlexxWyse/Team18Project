@@ -201,3 +201,41 @@ body{
 	cursor: pointer;
 	margin-left: 8px;
   }
+
+  #updatebutton {
+	margin: 10px; 
+	background-color: green; 
+	color: white; 
+	border-radius: 20px; 
+	padding: 10px 20px; 
+	text-align: center;
+  }
+
+  #itineraryview {
+	display: flex; 
+	width: 20vw; 
+	background-color: lightblue;
+	padding: 5px 10px; 
+	margin: 20px; 
+	border-radius: 10px; 
+	border: 1px solid;
+  }
+
+  #viewbusinessnames {
+	display: flex; 
+	background: lightblue; 
+	margin: 20px; 
+	border-radius: 10px; 
+	width: 25vw; 
+	padding: 5px 10px; 
+	border: 1px solid;
+  }
+
+  #businessnames {
+	display: inline-block; 
+	background-color: lightblue; 
+	border-radius: 10px; 
+	margin: 10px; 
+	padding-right: 25px; 
+	border: 1px solid;
+  }

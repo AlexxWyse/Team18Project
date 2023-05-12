@@ -7,7 +7,7 @@
 <p style='margin: 10px;'>Itinerary Author: {{ itinerary.user_id }}</p>
 
 <h4 style='margin: 10px'>Your Hot Spots!:</h4>
-<div style='display: inline-block; background-color: lightblue; border-radius: 10px; margin: 10px; padding-right: 25px; border: 1px solid'> 
+<div id="businessnames" style='display: inline-block; background-color: lightblue; border-radius: 10px; margin: 10px; padding-right: 25px; border: 1px solid'> 
   <ul>
   {% for business in itinerary.business_list.all %}
     <li>{{ business.business_name }}</li>
