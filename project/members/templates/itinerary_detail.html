@@ -1,4 +1,3 @@
-
 {% extends 'registration/home.html'%}
 {% load static %}
 
@@ -6,23 +5,25 @@
 
 
 <h2>Itinerary Details</h2>
-<h3>Itinerary Name: {{ itinerary.itinerary_name }}</h3>
-<p>User ID: {{ itinerary.user_id }}</p>
+<h3 style='margin: 10px;'>Itinerary Name: {{ itinerary.itinerary_name }}</h3>
+<p style='margin: 10px;'>Itinerary Author: {{ itinerary.user_id }}</p>
 
-<h4>Your Hot Spots!:</h4>
-<ul>
+<h4 style='margin: 10px'>Your Hot Spots!:</h4>
+<div style='display: inline-block; background-color: lightblue; border-radius: 10px; margin: 10px; padding-right: 25px; border: 1px solid'> 
+  <ul>
   {% for business in itinerary.business_list.all %}
     <li>{{ business.business_name }}</li>
     <!-- Display other relevant fields of the business -->
   {% empty %}
     <li>No businesses found.</li>
   {% endfor %}
-</ul>
-
-<button onclick="window.location.href='{% url 'itinerary_update' id=itinerary.id %}'" class="btn btn-primary">Update Itinerary</button>
+  </ul>
+  </div>
+<br>
+<button style="margin-left: 10px; background-color: blue; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" onmousedown="this.style.backgroundColor='darkblue';" onmouseup="this.style.backgroundColor='blue';" onclick="window.location.href='{% url 'itinerary_update' id=itinerary.id %}'" class="btn btn-primary">Update Itinerary</button>
 <form action="{% url 'itinerary_delete' itinerary.id %}" method="post">
   {% csrf_token %}
-  <button type="submit" class="btn btn-danger">Delete Itinerary</button>
+  <button type="submit"style="margin: 10px; background-color: red; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" onmousedown="this.style.backgroundColor='darkred';" onmouseup="this.style.backgroundColor='red';" class="btn btn-danger">Delete Itinerary</button>
 </form>
 {% endblock %}
 
