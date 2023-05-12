@@ -5,16 +5,18 @@
   <h2>Update Itinerary</h2>
   <form method="post">
     {% csrf_token %}
-    <label for="itinerary_name">Itinerary Name:</label>
-    <input type="text" id="itinerary_name" name="itinerary_name" value="{{ itinerary.itinerary_name }}">
-
-    <label for="businesses">Businesses:</label>
+    <div style='display: flex; width: 20vw; background-color: lightblue; padding: 5px 10px; margin: 20px; border-radius: 10px; border: 1px solid'>
+      <label for="itinerary_name" style='padding: 10px'>Itinerary Name:</label>
+      <input type="text" id="itinerary_name" name="itinerary_name" value="{{ itinerary.itinerary_name }}">
+    </div>
+  <div style='display: flex; background: lightblue; margin: 20px; border-radius: 10px; width: 25vw; padding: 5px 10px; border: 1px solid'>
+    <label for="businesses" style='padding: 20px'>Businesses:</label>
     <select id="businesses" name="businesses" multiple>
       {% for business in businesses %}
-        <option value="{{ business.id }}" {% if business in itinerary.business_list.all %}selected{% endif %}>{{ business.business_name }}</option>
+        <option value="{{ business.id }}" {% if business in itinerary.business_list.all %}selected{% endif %} style="width: 100%; height: 15px;"> {{ business.business_name }} </option>
       {% endfor %}
     </select>
-
-    <button type="submit">Update</button>
+  </div>
+    <button style="margin: 10px; background-color: green; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" onmousedown="this.style.backgroundColor='darkgreen';" onmouseup="this.style.backgroundColor='green';" class="btn btn-danger" type="submit">Update</button>
   </form>
 {% endblock %}
