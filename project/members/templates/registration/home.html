@@ -48,7 +48,7 @@
 		<div id="temp"></div>
 	</div>
 	<div class="textbox">
-		<h2>My Travel List</h2>
+		<h2>{{request.user | title}}'s Travel List</h2>
 		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px; ">
 			<!-- Travel list items will be added here -->
 		{% block itineraryinfo %}
