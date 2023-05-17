@@ -11,7 +11,12 @@ function getWeatherForLocation() {
     }
   })
   .then(data => {
-    console.log(data);
+    const temperatureInKelvin = data.current["temp"];
+    const precipitation = data.current.weather[0]["main"];
+    const temperatureInCelsius = temperatureInKelvin - 273.15;
+    console.log(`Temperature: ${temperatureInCelsius.toFixed(2)}°C`)
+    console.log(precipitation)
+    console.log(data)
   })
   .catch(error => {
     console.error(error);
