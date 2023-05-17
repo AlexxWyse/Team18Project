@@ -1,23 +1,23 @@
-import  { expLongitude, expLatitude} from "./maps"
-
+// import { expLongitude, expLatitude } from "./maps.js"
+const APIKEY = "d0b6c9ade1db30fe160940ff847a63cb"
 
 function getWeatherForLocation() {
-    fetch("https://api.meteomatics.com/2023-05-17T00:00:00Z/t_2m:C/52.520551,13.461804/json")
-      .then(response => {
-        if (response.ok) {
-          return response.json(); // Parse the response as JSON
-        } else {
-          throw new Error("Error: Could not process response");
-        }
-      })
-      .then(data => {
-        console.log(data); // Log the parsed JSON data
-      })
-      .catch(error => {
-        console.log("An error occurred:", error);
-      });
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${49.246292}&lon=${-123.116226}&appid=${APIKEY}`)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
   }
   
 
-
+  
   getWeatherForLocation();

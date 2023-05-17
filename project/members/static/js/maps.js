@@ -6,6 +6,9 @@ let markers = [];
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 
+let expLongitude = null;
+let expLatitude = null;
+
 function displayDropDown() {
   document.getElementById("dropdown").classList.toggle("display");
 }
@@ -27,7 +30,7 @@ document
   .getElementById("select-button")
   .addEventListener("click", displayDropDown);
 
-function initMap() {
+async function initMap() {
   const startLatLng = { lat: 49.2827, lng: -123.1207 };
   const options = {
     zoom: 14,
@@ -116,6 +119,8 @@ function initMap() {
     let coordinates = string_coords.split(", ");
     let lat = coordinates[0].replace("(", "");
     let lng = coordinates[1].replace(")", "");
+    let expLatitude = lat;
+    let expLongitude = lng;
     console.log("lng is " + lng + " and lat is " + lat);
     var marker = new google.maps.Marker({
       position: props.coords,
