@@ -47,16 +47,25 @@ function getWeatherForLocation() {
         const dayWeatherIcon = weekWeather[i].data[2]
         
         const dayDiv = document.createElement("div");
+        const designedDiv = document.createElement("div");
+        designedDiv.className = "daily-weather-div";
         const dayImage = document.createElement("img");
-        dayImage.src = dayWeatherIcon;
-        const dayContext = document.createElement("p");
+        dayImage.src = `https://openweathermap.org/img/wn/${dayWeatherIcon}.png`;
+        const dayContextWeekDay = document.createElement("p");
+        const dayContextTemp = document.createElement("p");
+        const dayContextWeather = document.createElement("p");
         
-        dayContext.textContent = `${dayData.weekday}: ${dayData.data[0]}\n ${dayData.data[1]}`;
-
+        dayContextWeekDay.textContent += `${dayData.weekday}`; 
+        dayContextTemp.textContent += `${dayData.data[0]}`; 
+        dayContextWeather.textContent += `${dayData.data[1]}`;
+        designedDiv.style = "padding-bottom: 5vh; padding-left: 5vh; padding-right: 5vh; height: 15vh"
         
         // Append the paragraph to the dayDiv
-        dayDiv.appendChild(dayContext);
-        dayDiv.appendChild(dayImage);
+        dayDiv.appendChild(designedDiv);
+        designedDiv.appendChild(dayContextWeekDay)
+        designedDiv.appendChild(dayContextTemp)
+        designedDiv.appendChild(dayContextWeather)
+        designedDiv.appendChild(dayImage)
         // Append the dayDiv to the weatherdisplay element
         weekDay.appendChild(dayDiv);
       }
