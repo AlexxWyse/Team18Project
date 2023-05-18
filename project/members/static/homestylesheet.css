@@ -239,3 +239,9 @@ body{
 	padding-right: 25px; 
 	border: 1px solid;
   }
+
+  #weatherdisplay {
+	background-color: black;
+	border-radius: 10px;
+	border: 1px solid;
+  }

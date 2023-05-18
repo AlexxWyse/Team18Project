@@ -13,22 +13,57 @@ function getWeatherForLocation() {
     }
   })
   .then(data => {
-    const temperatureInKelvin = data.current["temp"];
-    const precipitation = data.current.weather[0]["main"];
-    const temperatureInCelsius = temperatureInKelvin - 273.15;
-    const weatherIcon = data.current.weather[0]["icon"];
-    console.log(`Temperature: ${temperatureInCelsius.toFixed(2)}°C`)
-    console.log(precipitation);
-    console.log(data);
-    console.log(tempimage);
 
-    let div = document.getElementById("weather");
-    let currentWeather = document.createElement("p")
-    currentWeather.textContent = `Temperature: ${temperatureInCelsius.toFixed(2)}°C, Precipitation: ${precipitation}`;
-    let weatherImage = document.createElement("img")
-    weatherImage.src = `https://openweathermap.org/img/wn/${weatherIcon}.png`
-    div.appendChild(currentWeather);
+    const week = {
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday",
+        7: "Sunday"
+    }
 
+    let dailyWeather = data.daily
+    let weekWeather = [];
+
+    for (let index = 0; index < dailyWeather.length; index++) {
+        
+        let temp = dailyWeather[index].temp["day"];
+        let weatherIcon = dailyWeather[index].weather[0]["icon"]; 
+
+        let day = {
+            "weekday": week[index],
+            "data": [`${(temp - 273.15).toFixed(2)}°C`, dailyWeather[index].weather[0]["main"], weatherIcon]
+        }
+        weekWeather.push(day)  
+    }
+
+    const weekDay = document.getElementById("weatherdisplay");
+    
+    for (let i = 0; i < weekWeather.length; i++) {
+        const dayData = weekWeather[i];
+        const dayWeatherIcon = weekWeather[i].data[2]
+        
+        const dayDiv = document.createElement("div");
+        const dayImage = document.createElement("img");
+        dayImage.src = dayWeatherIcon;
+        const dayContext = document.createElement("p");
+        
+        dayContext.textContent = `${dayData.weekday}: ${dayData.data[0]}\n ${dayData.data[1]}`;
+
+        
+        // Append the paragraph to the dayDiv
+        dayDiv.appendChild(dayContext);
+        dayDiv.appendChild(dayImage);
+        // Append the dayDiv to the weatherdisplay element
+        weekDay.appendChild(dayDiv);
+      }
+    // console.log(weekWeather)  
+    // let dayDiv = document.createElement("div");
+    // let dayContext = document.createElement("p");
+    // dayContext.textContent()
 })
   .catch(error => {
     console.error(error);
