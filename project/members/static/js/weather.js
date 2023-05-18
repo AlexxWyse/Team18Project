@@ -16,18 +16,25 @@ function getWeatherForLocation() {
     const temperatureInKelvin = data.current["temp"];
     const precipitation = data.current.weather[0]["main"];
     const temperatureInCelsius = temperatureInKelvin - 273.15;
-    const tempimage = data.current.weather[0]["icon"];
+    const weatherIcon = data.current.weather[0]["icon"];
     console.log(`Temperature: ${temperatureInCelsius.toFixed(2)}°C`)
     console.log(precipitation);
     console.log(data);
     console.log(tempimage);
 
-  })
+    let div = document.getElementById("weather");
+    let currentWeather = document.createElement("p")
+    currentWeather.textContent = `Temperature: ${temperatureInCelsius.toFixed(2)}°C, Precipitation: ${precipitation}`;
+    let weatherImage = document.createElement("img")
+    weatherImage.src = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+    div.appendChild(currentWeather);
+
+})
   .catch(error => {
     console.error(error);
   });
-  }
+  };
   
 
   
-  map.addEventListener("click", getWeatherForLocation())
+  map.addEventListener("click", getWeatherForLocation)
