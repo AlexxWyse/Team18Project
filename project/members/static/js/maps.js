@@ -233,7 +233,7 @@ function addResult(result, i) {
   const iconTd = document.createElement("td");
   const nameTd = document.createElement("td");
   let icon = document.createElement("img");
-  icon.setAttribute("class", "google-map-icon");
+  icon.classList.add("class", "google-map-icon");
   const button = document.createElement("button");
   button.innerText = "Add";
   icon.src = markerIcon;
