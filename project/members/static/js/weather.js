@@ -1,6 +1,6 @@
 import { expLongitude, expLatitude } from "./maps.js"
 const APIKEY = "d0b6c9ade1db30fe160940ff847a63cb"
-const map = document.getElementById("map");
+const mapicon = document.getElementsByClassName("google-map-icon");
 
 
 function getWeatherForLocation() {
@@ -82,4 +82,4 @@ function getWeatherForLocation() {
   
 
   
-  map.addEventListener("click", getWeatherForLocation)
+  mapicon.addEventListener("click", getWeatherForLocation)

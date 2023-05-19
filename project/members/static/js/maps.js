@@ -119,6 +119,8 @@ async function initMap() {
     let coordinates = string_coords.split(", ");
     let lat = coordinates[0].replace("(", "");
     let lng = coordinates[1].replace(")", "");
+    let expLatitude = lat;
+    let expLongitude = lng;
     console.log("lng is " + lng + " and lat is " + lat);
     var marker = new google.maps.Marker({
       position: props.coords,
@@ -233,6 +235,7 @@ function addResult(result, i) {
   const iconTd = document.createElement("td");
   const nameTd = document.createElement("td");
   const icon = document.createElement("img");
+  icon.classList("google-map-icon")
   const button = document.createElement("button");
   button.innerText = "Add";
   icon.src = markerIcon;
