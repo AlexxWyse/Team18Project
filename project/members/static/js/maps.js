@@ -6,9 +6,6 @@ let markers = [];
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 
-let expLongitude = 49.246292;
-let expLatitude = -123.116226;
-
 function displayDropDown() {
   document.getElementById("dropdown").classList.toggle("display");
 }
@@ -134,6 +131,7 @@ async function initMap() {
     marker.addListener("click", function () {
       infoWindow.open(map, marker);
     });
+    return expLatitude, expLongitude
   }
   //credit: https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
   function showInfoWindow() {
@@ -234,8 +232,8 @@ function addResult(result, i) {
 
   const iconTd = document.createElement("td");
   const nameTd = document.createElement("td");
-  const icon = document.createElement("img");
-  icon.classList("google-map-icon")
+  let icon = document.createElement("img");
+  icon.setAttribute("class", "google-map-icon");
   const button = document.createElement("button");
   button.innerText = "Add";
   icon.src = markerIcon;
