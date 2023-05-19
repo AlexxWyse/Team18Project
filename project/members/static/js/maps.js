@@ -6,8 +6,8 @@ let markers = [];
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 
-let expLongitude = null;
-let expLatitude = null;
+let expLongitude = 49.246292;
+let expLatitude = -123.116226;
 
 function displayDropDown() {
   document.getElementById("dropdown").classList.toggle("display");
@@ -119,8 +119,6 @@ async function initMap() {
     let coordinates = string_coords.split(", ");
     let lat = coordinates[0].replace("(", "");
     let lng = coordinates[1].replace(")", "");
-    let expLatitude = lat;
-    let expLongitude = lng;
     console.log("lng is " + lng + " and lat is " + lat);
     var marker = new google.maps.Marker({
       position: props.coords,
@@ -310,3 +308,5 @@ const googleMapsScript = document.createElement("script");
 googleMapsScript.src =
   "https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&libraries=places&callback=initMap&libraries=places&v=weekly";
 document.body.appendChild(googleMapsScript);
+
+export { expLatitude, expLongitude }

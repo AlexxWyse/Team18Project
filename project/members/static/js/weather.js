@@ -1,10 +1,10 @@
-// import { expLongitude, expLatitude } from "./maps.js"
+import { expLongitude, expLatitude } from "./maps.js"
 const APIKEY = "d0b6c9ade1db30fe160940ff847a63cb"
 const map = document.getElementById("map");
 
 
 function getWeatherForLocation() {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${49.246292}&lon=${-123.116226}&appid=${APIKEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${expLatitude}&lon=${expLongitude}&appid=${APIKEY}`)
   .then(response => {
     if (response.ok) {
       return response.json();
@@ -28,6 +28,7 @@ function getWeatherForLocation() {
     let dailyWeather = data.daily
     let weekWeather = [];
 
+    console.log(expLatitude, expLongitude)
     for (let index = 0; index < dailyWeather.length; index++) {
         
         let temp = dailyWeather[index].temp["day"];
