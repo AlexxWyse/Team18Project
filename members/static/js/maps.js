@@ -248,11 +248,7 @@ function initMap() {
           // in an info window.
           markers[i].placeResult = results[i];
           //end credit
-          google.maps.event.addListener(markers[i], "click", function (event) {
-            marker_coordinates.push(event.latLng.lat());
-            marker_coordinates.push(event.latLng.lng());
-            console.log("filter marker coordinates: ", marker_coordinates);
-          });
+          getLatLng(markers[i]);
           google.maps.event.addListener(markers[i], "click", () =>
             displayPopup(markers[i], results[i])
           );
@@ -313,6 +309,14 @@ function initMap() {
   //>>>
 }
 
+function getLatLng(marker) {
+  google.maps.event.addListener(marker, "click", function (event) {
+    marker_coordinates.push(event.latLng.lat());
+    marker_coordinates.push(event.latLng.lng());
+    console.log("filter marker coordinates: ", marker_coordinates);
+  });
+}
+
 function clearResults() {
   const results = document.getElementById("results");
 
@@ -341,7 +345,7 @@ function addResult(result, i) {
   icon.src = markerIcon;
   icon.setAttribute("class", "placeIcon");
   icon.setAttribute("className", "placeIcon");
-
+  iconTd.appendChild(icon);
   const name = document.createTextNode(result.name);
   let itenarary_item = getLocationInfo(result);
   nameTd.appendChild(name);
@@ -396,7 +400,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-const googleMapsScript = document.createElement("script");
-googleMapsScript.src =
-  "https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&libraries=places&callback=initMap&libraries=places&v=weekly";
-document.body.appendChild(googleMapsScript);
+// const googleMapsScript = document.createElement("script");
+// googleMapsScript.src =
+//   "https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&libraries=places&callback=initMap&libraries=places&v=weekly";
+// document.body.appendChild(googleMapsScript);
