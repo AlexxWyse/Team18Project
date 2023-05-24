@@ -48,38 +48,58 @@
 <div class="container">
 	<div class="container-map">
 		<div class="search-container">
-		<input class="form-control" id="search" type="text" placeholder="Search..." />
-		<button id="clear-button">Clear</button>
-		<div class="filterContainer">
-			<button id="select-button">Filter</button>
-			<div id="dropdown" class="dropdown-buttons">
-			  <button style="border-radius: 10px;" id="hotels">Hotels</button>
-			  <button style="border-radius: 10px;" id="tourist_attractions">Tourist Attractions</button>
-			  <button style="border-radius: 10px;" id="restaurants">Restaurants</button>
+			<input class="form-control" id="search" type="text" placeholder="Search..." />
+			<button id="clear-button">Clear</button>
+			<div class="filterContainer">
+				<button id="select-button">Filter</button>
+				<div id="dropdown" class="dropdown-buttons">
+					<button style="border-radius: 10px;" id="hotels">Hotels</button>
+					<button style="border-radius: 10px;" id="tourist_attractions">Tourist Attractions</button>
+					<button style="border-radius: 10px;" id="restaurants">Restaurants</button>
+				</div>
 			</div>
-		  </div>
-	</div>
+		</div>
 		<div id="map"></div>
 	</div>
-<div class="textbox">
-	<div class="navigation-buttons">
-		<button id="filter-button">Filter</button>
-		<button id="results-button">Results</button>
-	</div>
-	<div class="filter-results-container">
-		<div class="filterTextbox">
-			<!-- Filter textbox content -->
-			<table id="resultsTable">
-				<tbody id="results"></tbody>
-			</table>
+	<div class="textbox">
+		<div class="navigation-buttons">
+			<button id="filter-button">Filter</button>
+			<button id="itinerary-button">Itinerary</button>
+		</div>
+		<div class="filter-results-container" id="filter-results-container">
+			<div class="filterTextbox">
+				<!-- Filter textbox content -->
+				<table id="resultsTable">
+					<tbody id="results"></tbody>
+				</table>
+			</div>
+		</div>
+		<h2>{{request.user | title}}'s Travel List</h2>
+		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px; display: none;">
+			<!-- Travel list items will be added here -->
+			{% block itineraryinfo %}
+			{% endblock %}
+			<button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button">Save Itinerary</button>
 		</div>
 	</div>
-	<h2>{{request.user | title}}'s Travel List</h2>
-	<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px;">
-		<!-- Travel list items will be added here -->
-		{% block itineraryinfo %}
-		{% endblock %}
-		<button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
-	</div>
 </div>
+<script>
+	document.getElementById('filter-button').addEventListener('click', function() {
+	  var filterResultsContainer = document.getElementById('filter-results-container');
+	  var listContainer = document.getElementById('list');
+	  
+	  filterResultsContainer.style.display = 'block';
+	  listContainer.style.display = 'none';
+	});
+	
+	document.getElementById('itinerary-button').addEventListener('click', function() {
+	  var filterResultsContainer = document.getElementById('filter-results-container');
+	  var listContainer = document.getElementById('list');
+	  
+	  filterResultsContainer.style.display = 'none';
+	  listContainer.style.display = 'block';
+	});
+  </script>
+  
+  
 {% endblock content %}
