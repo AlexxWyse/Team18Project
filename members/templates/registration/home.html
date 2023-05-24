@@ -18,6 +18,7 @@
 
 <div class="container-heading">
 	<h2>Travel Beyond Boundaries!</h2>
+	<h3>Currency Conversion</h3>
 	<div class="heading-images">
 	  <img src="{% static 'images/imgbin_airplane-airline-ticket-travel-icon-png.png' %}" alt="location image with plane"
 		width="100" height="75">
@@ -26,7 +27,6 @@
   </div>
   <div class="container-currency">
 	<div id="currencydisplay">
-	  <h3>Currency Conversion</h3>
 	  <form method="post" id="currencyform">
 		{% csrf_token %}
 		<label for="source_country">Source Country:</label>
@@ -61,18 +61,25 @@
 	</div>
 		<div id="map"></div>
 	</div>
-	<div class="textbox">
-		<h2>{{request.user | title}}'s Travel List</h2>
-		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px;">
-		  <!-- Travel list items will be added here -->
-		  {% block itineraryinfo %}
-		  {% endblock %}
-		  <button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
-		  <div class="filterTextbox">
+<div class="textbox">
+	<div class="navigation-buttons">
+		<button id="filter-button">Filter</button>
+		<button id="results-button">Results</button>
+	</div>
+	<div class="filter-results-container">
+		<div class="filterTextbox">
+			<!-- Filter textbox content -->
 			<table id="resultsTable">
-			  <tbody id="results"></tbody>
+				<tbody id="results"></tbody>
 			</table>
 		</div>
-		</div>
+	</div>
+	<h2>{{request.user | title}}'s Travel List</h2>
+	<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px;">
+		<!-- Travel list items will be added here -->
+		{% block itineraryinfo %}
+		{% endblock %}
+		<button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
+	</div>
 </div>
 {% endblock content %}

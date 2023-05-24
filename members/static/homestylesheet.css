@@ -264,11 +264,9 @@ header {
 	margin: 0;
 	overflow: hidden;
   }
-  
   nav li {
 	float: right;
   }
-  
   nav li a {
 	display: block;
 	color: rgb(10, 8, 8);
@@ -278,7 +276,7 @@ header {
 	font-size: 20px;
 	font-weight: bolder;
   }
-  
+
   nav li a:hover {
 	background-color: #e8ba5c;
 	border-radius: 10px;
@@ -347,5 +345,39 @@ header {
 	width: 15%;
 	display: flex;
 	flex-direction: row;
+  }
+
+#source_country,#target_country,#amount {
+	display: flex;
+	height: 8%;
 }
-  
+.filter-results-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.filterTextbox {
+	background-color: #FBE8C2;
+	border: 1px solid;
+	border-radius: 10px;
+	margin: 10px;
+}
+
+.navigation-buttons {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.navigation-buttons button {
+	margin: 0 5px;
+}
+.navigation-buttons{
+	background-color: #c29b02;
+	color: #000000;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 2px;
+	cursor: pointer;
+	margin-right: 10px;
+}
