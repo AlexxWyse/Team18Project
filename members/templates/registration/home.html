@@ -16,7 +16,6 @@
 {% block title %} <title>WanderWhiz Home </title>  {% endblock%}
 {% block content %}
 
-
 <div class="container-heading">
 	<h2>Travel Beyond Boundaries!</h2>
 	<div class="heading-images">
@@ -25,11 +24,10 @@
 	  <img src="{% static 'images/ce9aek1muee0d0lhd8elh1c8jq.png' %}" alt="location image" width="75" height="75">
 	</div>
   </div>
-  
   <div class="container-currency">
 	<div id="currencydisplay">
 	  <h3>Currency Conversion</h3>
-	  <form method="post">
+	  <form method="post" id="currencyform">
 		{% csrf_token %}
 		<label for="source_country">Source Country:</label>
 		<input type="text" id="source_country" name="source_country" required><br><br>
@@ -44,7 +42,8 @@
 		<p><strong> Conversion Result: </strong> {{ amount }} in {{ source_country }} is equal to {{ converted_amount }} in {{ target_country }}</p>
 	  {% endif %}
 	</div>
-  </div>
+</div>
+
 </div>	
 <div class="container">
 	<div class="container-map">
@@ -60,63 +59,20 @@
 			</div>
 		  </div>
 	</div>
-	<div class="filterTextbox">
-		<table id="resultsTable">
-		  <tbody id="results"></tbody>
-		</table>
+		<div id="map"></div>
 	</div>
-		<div class="filterTextbox">
+	<div class="textbox">
+		<h2>{{request.user | title}}'s Travel List</h2>
+		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px;">
+		  <!-- Travel list items will be added here -->
+		  {% block itineraryinfo %}
+		  {% endblock %}
+		  <button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
+		  <div class="filterTextbox">
 			<table id="resultsTable">
 			  <tbody id="results"></tbody>
 			</table>
-<<<<<<< HEAD
 		</div>
-		<div id="map"></div>
-=======
-		  </div>
-		  <div id="map"></div>
-		  <div id="weather" style='grid-row: 3/4; grid-column: 1/3; padding: 10px;'>
-			  <div id="currencydisplay">
-				  <h3>Currency Conversion</h3>
-				  <form method="post">
-					  {% csrf_token %}
-					  <label for="source_country">Source Country:</label>
-					  <input type="text" id="source_country" name="source_country" required><br><br>
-					  <label for="target_country">Target Country:</label>
-					  <input type="text" id="target_country" name="target_country" required><br><br>
-					  <label for="amount">Amount:</label>
-					  <input type="number" id="amount" name="amount" required><br><br>
-					  <input type="submit" value="Convert" id = 'converterbutton' style='    background-color: #e8ba5c;
-					  color: #fff;
-					  border: none;
-					  padding: 8px 16px;
-					  border-radius: 10px;
-					  cursor: pointer;
-					  margin-left: 8px;
-					  font-size: larger;'>
-				  </form>
-				  
-				  {% if converted_amount %}
-				  
-				  <p><strong> Conversion Result: </strong> {{ amount }} in {{ source_country }} is equal to {{ converted_amount }} in {{ target_country }}</p>
-				  {% endif %}
-				  
-				  </div>
-		  </div>
-  
-		<div id="temp"></div>
->>>>>>> e9d5445d39f77b6af7643aa9d6b1c2c7823c8fe5
-	</div>
-
-	<div class="textbox">
-		<h2>{{request.user | title}}'s Travel List</h2>
-		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px; ">
-			<!-- Travel list items will be added here -->
-	
-		{% block itineraryinfo %}
-		{% endblock %}
-		<button style="border: 1px solid; margin: 10px; background-color: darkgreen; color: white; border: none; border-radius: 20px; padding: 10px 20px; text-align: center; text-decoration: none;" id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
 		</div>
-	</div>
 </div>
 {% endblock content %}
