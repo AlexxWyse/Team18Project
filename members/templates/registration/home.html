@@ -7,7 +7,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="{% static 'js/maps.js' %}" defer type="module"></script>
 <script src="{% static 'js/placeTypes.js' %}" defer type="module"></script>
-<script src="{% static 'js/weather.js' %}" defer type="module"></script>
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&callback=initMap&libraries=places"></script>
 {% comment %} <script src="./scripts/maps.js" defer type="module"></script>
@@ -16,35 +15,33 @@
 {% block title %} <title>WanderWhiz Home </title>  {% endblock%}
 {% block content %}
 
+
 <div class="container-heading">
 	<h2>Travel Beyond Boundaries!</h2>
-	<h3>Currency Conversion</h3>
 	<div class="heading-images">
-	  <img src="{% static 'images/imgbin_airplane-airline-ticket-travel-icon-png.png' %}" alt="location image with plane"
-		width="100" height="75">
-	  <img src="{% static 'images/ce9aek1muee0d0lhd8elh1c8jq.png' %}" alt="location image" width="75" height="75">
+		<img src="{% static 'images/imgbin_airplane-airline-ticket-travel-icon-png.png' %}" alt="location image with plane"
+			width="100" height="75">
+		<img src="{% static 'images/ce9aek1muee0d0lhd8elh1c8jq.png' %}" alt="location image" width="75" height="75">
 	</div>
-  </div>
-  <div class="container-currency">
+	<h3>Currency Conversion</h3>
 	<div id="currencydisplay">
-	  <form method="post" id="currencyform">
-		{% csrf_token %}
-		<label for="source_country">Source Country:</label>
-		<input type="text" id="source_country" name="source_country" required><br><br>
-		<label for="target_country">Target Country:</label>
-		<input type="text" id="target_country" name="target_country" required><br><br>
-		<label for="amount">Amount:</label>
-		<input type="number" id="amount" name="amount" required><br><br>
-		<input type="submit" value="Convert" id='converterbutton'>
-	  </form>
-  
-	  {% if converted_amount %}
-		<p><strong> Conversion Result: </strong> {{ amount }} in {{ source_country }} is equal to {{ converted_amount }} in {{ target_country }}</p>
-	  {% endif %}
-	</div>
+			<label for="source_country">Source Country:</label>
+			<input type="text" id="source_country" name="source_country" required><br><br>
+			<label for="target_country">Target Country:</label>
+			<input type="text" id="target_country" name="target_country" required><br><br>
+			<label for="amount">Amount:</label>
+			<input type="number" id="amount" name="amount" required><br><br>
+			<button id = 'converterbutton' style='    background-color: #e8ba5c;
+			color: #fff;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-left: 8px;
+			font-size: larger;'> Convert </button>
+		
+		</div>
 </div>
-
-</div>	
 <div class="container">
 	<div class="container-map">
 		<div class="search-container">
@@ -63,9 +60,10 @@
 	</div>
 	<div class="textbox">
 		<div class="navigation-buttons">
-			<button id="filter-button">Filter</button>
+			<button id="results-button">Results</button>
 			<button id="itinerary-button">Itinerary</button>
 		</div>
+		<h2>{{request.user | title}}'s Travel List</h2>
 		<div class="filter-results-container" id="filter-results-container">
 			<div class="filterTextbox">
 				<!-- Filter textbox content -->
@@ -74,7 +72,6 @@
 				</table>
 			</div>
 		</div>
-		<h2>{{request.user | title}}'s Travel List</h2>
 		<div id="list" style="background-color: #FBE8C2; border: 1px solid; border-radius: 10px; margin: 10px; display: none;">
 			<!-- Travel list items will be added here -->
 			{% block itineraryinfo %}
@@ -84,7 +81,7 @@
 	</div>
 </div>
 <script>
-	document.getElementById('filter-button').addEventListener('click', function() {
+	document.getElementById('results-button').addEventListener('click', function() {
 	  var filterResultsContainer = document.getElementById('filter-results-container');
 	  var listContainer = document.getElementById('list');
 	  
@@ -100,6 +97,5 @@
 	  listContainer.style.display = 'block';
 	});
   </script>
-  
-  
+
 {% endblock content %}

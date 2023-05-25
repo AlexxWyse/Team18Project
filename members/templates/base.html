@@ -29,11 +29,10 @@
         <nav>
             <ul>
                 {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'logout'%}">Logout</a></li>
                     <li><a href="{% url 'home'%}">Home</a></li>
-                    
+                    <li><a href="{% url 'logout'%}">Logout</a></li>
                     <li><a href="{% url 'itinerary_list'%}">View Itineraries</a></li>
-                    <li><a href="#" style="background-color: inherit; border-radius: inherit; transition: none;">Hi {{request.user | title}}!</a></li>
+                    <li class="username"><a href="#">Hi {{request.user | title}}!</a></li>
                 {% else %}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Sign Up</a></li>
@@ -47,7 +46,7 @@
             </div>
         </div>
     </main>
-    <footer id="feet" >
+    <footer id="feet">
         <div class="container-footer">
             <div class="footer-links">
                 <a href="#">About Us</a>

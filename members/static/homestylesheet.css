@@ -92,7 +92,6 @@
 	grid-row: 1;
 	border-radius: 10px;
 	border-color: #E7C176;
-	grid-column: 2;
 	grid-row: 2;
 }
 
@@ -152,7 +151,6 @@ body {
 
 .container-map {
 	display: grid;
-	grid-template-columns: 1fr 4fr;
 	grid-template-rows: 1fr 8fr;
 	min-height: 0;
 }
@@ -167,6 +165,7 @@ h2 {
 	justify-content: space-between;
 	padding-left: 1%;
 	padding-right: 1%;
+	flex-direction: column;
 }
 
 .heading-images {
@@ -264,9 +263,11 @@ header {
 	margin: 0;
 	overflow: hidden;
   }
+  
   nav li {
 	float: right;
   }
+  
   nav li a {
 	display: block;
 	color: rgb(10, 8, 8);
@@ -275,6 +276,9 @@ header {
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: bolder;
+  }
+    .username{
+	pointer-events: none;
   }
 
   nav li a:hover {
@@ -327,7 +331,7 @@ header {
   .footer-logo img {
 	margin-right: 0px;
   }
-  #converterbutton {
+    #converterbutton {
 	background-color: #e8ba5c;
 	color: #fff;
 	border: none;
@@ -337,14 +341,25 @@ header {
 	margin-left: 8px;
 	font-size: larger;
 	}
+	h3{
+		text-align: center;
+	}
+	.container-currency{
+		display: flex;
+		justify-content: space-evenly;
+	}
   #currencydisplay{
 	padding-left: 2%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	justify-content: space-between ;
   }
   #currencyform {
     min-width: 15%; 
 	width: 15%;
 	display: flex;
-	flex-direction: row;
   }
 
 #source_country,#target_country,#amount {
@@ -361,21 +376,20 @@ header {
 	border: 1px solid;
 	border-radius: 10px;
 	margin: 10px;
+	overflow-x: auto;
 }
-
-.navigation-buttons {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 10px;
-}
-
 .navigation-buttons button {
 	margin: 0 5px;
-	background-color: #c29b02;
+	background-color: #fff9c9;
 	color: #000000;
 	border: none;
 	padding: 5px 10px;
 	border-radius: 2px;
 	cursor: pointer;
 	margin-right: 10px;
+}
+.navigation-buttons {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
 }
